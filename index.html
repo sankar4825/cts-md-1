@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Local Community Event Portal</title>
+
+  <!-- Google Font (CSS Task 5) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- External Stylesheet (CSS Task 1) -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Embedded <style> tag — body background (CSS Task 1) -->
+  <style>
+    /* Embedded CSS: body background */
+    body {
+      background-color: #f0f4f8;
+    }
+  </style>
+</head>
+
+<body onbeforeunload="return warnBeforeLeave()">
+
+  <!-- ==================== Navigation ==================== -->
+  <!-- HTML Task 2 – nav with anchor links -->
+  <header id="mainHeader">
+    <div class="header-inner">
+      <div class="logo">🏙️ CityEvents</div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#register">Register</a></li>
+          <li><a href="#feedback">Feedback</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="help.html" target="_blank">Help ↗</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==================== Main ==================== -->
+  <main>
+
+    <!-- HOME SECTION -->
+    <section id="home">
+
+      <!-- HTML Task 3 – Welcome Banner with id + inline style for span -->
+      <div id="welcomeBanner">
+        <h1>Welcome to the <span class="city-name">City Community Portal</span></h1>
+        <p>
+          Your one-stop hub for local events, registrations, and community services.
+          <!-- Inline style: special offer (HTML Task 3) -->
+          <span style="color: red; font-weight: bold;">🎉 Special: Free entry this weekend!</span>
+        </p>
+        <a href="#register" class="cta-button">Register Now</a>
+      </div>
+
+      <!-- HTML Task 9 – Geolocation -->
+      <div class="geo-box">
+        <h3>📍 Find Nearby Events</h3>
+        <p>Allow location access to discover events close to you.</p>
+        <button class="btn-geo" onclick="findNearbyEvents()">Find Nearby Events</button>
+        <p id="geoResult" class="geo-result"></p>
+      </div>
+
+    </section>
+
+    <!-- EVENTS SECTION -->
+    <section id="events">
+      <h2>Upcoming Events</h2>
+
+      <div class="events-grid">
+        <!-- HTML Task 6 – onchange on dropdown shows event fee -->
+        <div class="eventCard highlight">
+          <h3>🎵 Music in the Park</h3>
+          <p>Join us for an evening of live performances.</p>
+          <p><strong>Date:</strong> June 15, 2026</p>
+          <label for="feeSelect">Select ticket:</label>
+          <select id="feeSelect" onchange="showEventFee(this)">
+            <option value="">-- Choose --</option>
+            <option value="Free">General Admission – Free</option>
+            <option value="₹250">VIP – ₹250</option>
+            <option value="₹100">Student – ₹100</option>
+          </select>
+          <p id="feeDisplay" class="fee-display"></p>
+        </div>
+
+        <div class="eventCard">
+          <h3>🎨 Art & Craft Fair</h3>
+          <p>Explore handmade crafts by local artisans.</p>
+          <p><strong>Date:</strong> June 22, 2026</p>
+        </div>
+
+        <div class="eventCard">
+          <h3>🏃 Community Marathon</h3>
+          <p>A 5K fun run open to all age groups.</p>
+          <p><strong>Date:</strong> July 4, 2026</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="gallery">
+      <h2>Event Gallery</h2>
+
+      <!-- HTML Task 4 – Table with 2 rows × 3 cols of images -->
+      <table class="gallery-table">
+        <caption>Photos from Past Community Events</caption>
+        <tbody>
+          <tr>
+            <td>
+              <!-- ondblclick to enlarge (HTML Task 6) -->
+              <img
+                src="https://picsum.photos/seed/festival/240/160"
+                alt="Annual Music Festival crowd enjoying performances"
+                title="Annual Music Festival"
+                class="gallery-img"
+                ondblclick="enlargeImage(this)"
+              />
+              <p class="img-caption">Annual Music Festival</p>
+            </td>
+            <td>
+              <img
+                src="https://picsum.photos/seed/food/240/160"
+                alt="Residents enjoying the Community Food Fair"
+                title="Community Food Fair"
+                class="gallery-img"
+                ondblclick="enlargeImage(this)"
+              />
+              <p class="img-caption">Community Food Fair</p>
+            </td>
+            <td>
+              <img
+                src="https://picsum.photos/seed/art/240/160"
+                alt="Art Exhibition showcasing local talent"
+                title="Art Exhibition"
+                class="gallery-img"
+                ondblclick="enlargeImage(this)"
+              />
+              <p class="img-caption">Art Exhibition</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img
+                src="https://picsum.photos/seed/sport/240/160"
+                alt="Participants at the Sports Day event"
+                title="Sports Day"
+                class="gallery-img"
+                ondblclick="enlargeImage(this)"
+              />
+              <p class="img-caption">Sports Day</p>
+            </td>
+            <td>
+              <img
+                src="https://picsum.photos/seed/garden/240/160"
+                alt="Volunteers at the Green Earth Cleanup drive"
+                title="Green Earth Cleanup"
+                class="gallery-img"
+                ondblclick="enlargeImage(this)"
+              />
+              <p class="img-caption">Green Earth Cleanup</p>
+            </td>
+            <td>
+              <img
+                src="https://picsum.photos/seed/kids/240/160"
+                alt="Children participating in the Kids Carnival"
+                title="Kids Carnival"
+                class="gallery-img"
+                ondblclick="enlargeImage(this)"
+              />
+              <p class="img-caption">Kids Carnival</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Image modal overlay for enlargement -->
+      <div id="imgModal" class="img-modal" onclick="closeModal()">
+        <img id="modalImg" src="" alt="Enlarged event photo" />
+        <p class="modal-hint">Click anywhere to close</p>
+      </div>
+    </section>
+
+    <!-- VIDEO SECTION (HTML Task 7) -->
+    <section id="video-invite">
+      <h2>🎬 Event Promo</h2>
+      <div class="video-wrapper">
+        <video
+          id="promoVideo"
+          width="640"
+          controls
+          oncanplay="videoReady()"
+        >
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <p id="videoStatus" class="video-status"></p>
+      </div>
+    </section>
+
+    <!-- REGISTRATION SECTION (HTML Task 5) -->
+    <section id="register">
+      <h2>Event Registration</h2>
+
+      <form id="registrationForm" onsubmit="handleSubmit(event)">
+
+        <!-- Name -->
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            placeholder="Enter your full name"
+            required
+            autofocus
+          />
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="you@example.com"
+            required
+          />
+        </div>
+
+        <!-- Date -->
+        <div class="form-group">
+          <label for="eventDate">Preferred Date</label>
+          <input
+            type="date"
+            id="eventDate"
+            name="eventDate"
+            required
+          />
+        </div>
+
+        <!-- Event Type (select + localStorage — HTML Task 8) -->
+        <div class="form-group">
+          <label for="eventType">Event Type</label>
+          <select id="eventType" name="eventType" required onchange="savePreference()">
+            <option value="">-- Select Event --</option>
+            <option value="music">🎵 Music in the Park</option>
+            <option value="art">🎨 Art & Craft Fair</option>
+            <option value="marathon">🏃 Community Marathon</option>
+            <option value="food">🍲 Food Festival</option>
+          </select>
+        </div>
+
+        <!-- Phone (onblur validation — HTML Task 6) -->
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="e.g. 9876543210"
+            onblur="validatePhone(this)"
+          />
+          <span id="phoneError" class="error-msg"></span>
+        </div>
+
+        <!-- Message -->
+        <div class="form-group">
+          <label for="message">Additional Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            placeholder="Any special requirements or questions..."
+          ></textarea>
+        </div>
+
+        <!-- Buttons -->
+        <div class="form-actions">
+          <button type="submit" class="cta-button" onclick="confirmSubmit()">Submit Registration</button>
+          <button type="button" class="btn-clear" onclick="clearPreferences()">Clear Preferences</button>
+        </div>
+
+        <!-- Output element (HTML Task 5) -->
+        <output id="confirmationOutput" class="form-output"></output>
+
+      </form>
+    </section>
+
+    <!-- FEEDBACK SECTION (HTML Task 6) -->
+    <section id="feedback">
+      <h2>Event Feedback</h2>
+      <form id="feedbackForm">
+
+        <div class="form-group">
+          <label for="feedbackName">Your Name</label>
+          <input type="text" id="feedbackName" placeholder="Name" />
+        </div>
+
+        <!-- Textarea with keyup character counter (HTML Task 6) -->
+        <div class="form-group">
+          <label for="feedbackText">Your Feedback
+            <span id="charCount" class="char-count">0 / 300</span>
+          </label>
+          <textarea
+            id="feedbackText"
+            rows="5"
+            maxlength="300"
+            placeholder="Share your experience..."
+            onkeyup="countChars(this)"
+          ></textarea>
+        </div>
+
+        <button
+          type="button"
+          class="cta-button"
+          onclick="alert('✅ Thank you for your feedback!')"
+        >Submit Feedback</button>
+
+      </form>
+    </section>
+
+    <!-- NEWS / MULTI-COLUMN SECTION (CSS Task 9) -->
+    <section id="news">
+      <h2>Community Bulletin</h2>
+      <div class="news-columns">
+        <h3>City Council Meeting — June 10</h3>
+        <p>
+          The city council will hold its quarterly meeting on June 10 at City Hall. 
+          Residents are encouraged to attend and voice their opinions on the new park development plan 
+          that aims to add recreational spaces in the eastern district.
+        </p>
+        <h3>Road Closure Notice</h3>
+        <p>
+          Main Street will be partially closed from June 12–14 for annual maintenance. 
+          Alternate routes via Park Avenue and River Road are recommended. 
+          Public transport schedules will be adjusted accordingly.
+        </p>
+        <h3>Volunteer Opportunities</h3>
+        <p>
+          Looking for volunteers for the Community Marathon on July 4. 
+          Sign up at the community centre or call 1800-CITY-HELP. 
+          Volunteers receive free event merchandise and refreshments.
+        </p>
+        <h3>Library Extension Hours</h3>
+        <p>
+          The central library will now remain open until 9 PM on weekdays starting June 1. 
+          New digital resource terminals have been installed for residents to access government services online.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== Footer ==================== -->
+  <footer>
+    <p>© 2026 City Community Portal. All rights reserved.</p>
+    <p>Contact: <a href="mailto:info@cityportal.gov">info@cityportal.gov</a></p>
+  </footer>
+
+  <!-- ==================== Scripts ==================== -->
+  <script src="app.js"></script>
+
+</body>
+</html>
