@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* =========================================================
    COMMUNITY EVENT PORTAL — style.css
    Aesthetic: Editorial dark with amber/coral accents
@@ -406,4 +407,672 @@ input.error, select.error { border-color: var(--accent2); }
   .form-row { grid-template-columns: 1fr; }
   .hero-stats { gap: 28px; }
   .events-section, .register-inner, .debug-section, .task-panel-inner { padding: 40px 20px; }
+=======
+/* ============================================================
+   styles.css — Local Community Event Portal
+   Covers all CSS3 Tasks (1–11)
+   ============================================================ */
+
+/* ──────────────────────────────────────────────
+   CSS Task 1 & 2: CSS Syntax, Comments, External
+   ────────────────────────────────────────────── */
+
+/* CSS Variables for consistent theming */
+:root {
+  --primary:      #1a3c5e;
+  --accent:       #e8a020;
+  --accent-hover: #c8881a;
+  --text:         #1c1c2e;
+  --text-light:   #4a5568;
+  --surface:      #ffffff;
+  --surface-alt:  #f0f4f8;
+  --border:       #d1dce8;
+  --success:      #2ecc71;
+  --error:        #e74c3c;
+  --radius:       10px;
+  --shadow:       0 4px 20px rgba(0,0,0,0.08);
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body:    'Source Sans 3', 'Segoe UI', sans-serif;
+}
+
+/* ──────────────────────────────────────────────
+   CSS Task 3 – Universal Selector Reset
+   ────────────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ──────────────────────────────────────────────
+   CSS Task 5 – Typography: font-family, size, weight
+   ────────────────────────────────────────────── */
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* CSS Task 3 – Element selector: all h2 */
+h2 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 1.2rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* CSS Task 3 – Grouping selector: h3, p */
+h3, p {
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+
+/* ──────────────────────────────────────────────
+   CSS Task 3 – ID selector: #mainHeader
+   ────────────────────────────────────────────── */
+#mainHeader {
+  background-color: var(--primary);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+/* ──────────────────────────────────────────────
+   CSS Task 6 – Link & List Styling
+   ────────────────────────────────────────────── */
+
+/* Remove bullets from nav (list-style-type) */
+nav ul {
+  list-style-type: none;     /* CSS Task 6 */
+  list-style-position: inside;
+  display: flex;
+  gap: 0.25rem;
+}
+
+nav ul li {
+  padding: 0 0.25rem;        /* CSS Task 6: padding/margin on list items */
+  margin: 0 0.1rem;
+}
+
+/* Link pseudo-classes (CSS Task 6) */
+nav ul li a:link {
+  color: #c8d8e8;
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+  font-weight: 600;
+}
+nav ul li a:visited {
+  color: #a0bcd0;
+}
+nav ul li a:hover {
+  color: #ffffff;
+  background: rgba(255,255,255,0.15);
+}
+nav ul li a:active {
+  color: var(--accent);
+  background: rgba(232,160,32,0.2);
+}
+
+/* ──────────────────────────────────────────────
+   CSS Task 4 – Color & Background (body section)
+   ────────────────────────────────────────────── */
+/* body background is in embedded <style> tag and overridden by variable */
+
+/* Section base styles */
+section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+/* ──────────────────────────────────────────────
+   CSS Task 4 – Welcome Banner: HEX, RGBA, gradient
+   ────────────────────────────────────────────── */
+#welcomeBanner {
+  /* HTML Task 3 – blue background via internal/external CSS */
+  background: linear-gradient(135deg, #1a3c5e 0%, #2b6394 60%, #e8a020 100%);
+  /* CSS Task 4 – gradient to section headers */
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 3.5rem 3rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+#welcomeBanner::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+}
+
+#welcomeBanner h1 {
+  font-family: var(--font-heading);
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+/* CSS Task 3 – inline style red used on span in HTML; .highlight class below */
+.city-name {
+  color: var(--accent);
+}
+
+/* CSS Task 3 – Class selector .highlight */
+.highlight {
+  border-left: 4px solid var(--accent) !important;
+  background: linear-gradient(to right, rgba(232,160,32,0.06), transparent) !important;
+}
+
+/* ──────────────────────────────────────────────
+   CSS Task 2 – CTA Button (with comment)
+   ────────────────────────────────────────────── */
+/* Style for main CTA button */
+.cta-button {
+  display: inline-block;
+  background-color: var(--accent);
+  color: #1a1a1a;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(232,160,32,0.35);
+  letter-spacing: 0.5px;
+  margin-top: 0.5rem;
+}
+.cta-button:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(232,160,32,0.45);
+}
+.cta-button:active {
+  transform: translateY(0);
+}
+
+/* ──────────────────────────────────────────────
+   Geo Box
+   ────────────────────────────────────────────── */
+.geo-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem 2rem;
+  margin-top: 2rem;
+  display: inline-block;
+  box-shadow: var(--shadow);
+}
+
+.btn-geo {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 0.65rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background 0.2s;
+  margin-top: 0.5rem;
+}
+.btn-geo:hover { background: #2b6394; }
+
+.geo-result {
+  margin-top: 0.75rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ──────────────────────────────────────────────
+   Events Grid
+   ────────────────────────────────────────────── */
+#events { background: var(--surface-alt); }
+
+/* CSS Task 4 – gradient header for events section */
+#events h2 {
+  background: linear-gradient(90deg, var(--primary), #2b6394);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* CSS Task 3 – Class selector .eventCard (CSS Task 8: border, padding, margin) */
+.eventCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;              /* CSS Task 8 – padding */
+  margin: 0;                     /* CSS Task 8 – margin */
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+  outline: none;                 /* CSS Task 8 – outline on focus */
+}
+
+.eventCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+}
+
+.eventCard select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.fee-display {
+  margin-top: 0.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: rgba(26,60,94,0.07);
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+/* ──────────────────────────────────────────────
+   CSS Task 7 – Gallery / Table Styling
+   ────────────────────────────────────────────── */
+#gallery { background: var(--surface); }
+
+.gallery-table {
+  width: 100%;
+  border-collapse: collapse;    /* CSS Task 7 */
+  text-align: center;           /* CSS Task 7 */
+  margin-top: 1.5rem;
+}
+
+.gallery-table caption {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+  caption-side: top;
+}
+
+/* CSS Task 7 – th, td with borders, padding, background */
+.gallery-table th,
+.gallery-table td {
+  border: 1px solid var(--border);
+  padding: 1rem;
+  background-color: var(--surface);
+}
+
+/* CSS Task 7 – zebra striping with nth-child(even) */
+.gallery-table tr:nth-child(even) td {
+  background-color: #eef3f8;
+}
+
+.gallery-img {
+  width: 220px;
+  height: 145px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 3px solid var(--border);  /* HTML Task 4: image border */
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.gallery-img:hover {
+  border-color: var(--accent);
+  transform: scale(1.03);
+}
+
+.img-caption {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-top: 0.4rem;
+  font-style: italic;
+}
+
+/* Image modal for double-click enlarge (HTML Task 6) */
+.img-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.82);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+.img-modal.active { display: flex; }
+.img-modal img {
+  max-width: 85vw;
+  max-height: 80vh;
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+.modal-hint {
+  color: rgba(255,255,255,0.6);
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+/* ──────────────────────────────────────────────
+   Video Section
+   ────────────────────────────────────────────── */
+#video-invite {
+  background: var(--primary);
+  color: #fff;
+}
+#video-invite h2 {
+  color: var(--accent);
+}
+#video-invite h2::after { background: #fff; }
+
+.video-wrapper {
+  margin-top: 1.5rem;
+}
+.video-wrapper video {
+  width: 100%;
+  max-width: 680px;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+.video-status {
+  margin-top: 0.75rem;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+/* ──────────────────────────────────────────────
+   CSS Task 8 – Registration Form (box model, outline)
+   ────────────────────────────────────────────── */
+#register { background: var(--surface-alt); }
+
+#registrationForm {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 2.5rem;           /* CSS Task 8: padding */
+  margin-top: 1.5rem;
+  border: 1px solid var(--border);   /* CSS Task 8: border */
+  box-shadow: var(--shadow);
+  max-width: 700px;
+}
+
+.form-group {
+  margin-bottom: 1.4rem;     /* CSS Task 8: margin */
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--primary);
+  font-size: 0.95rem;
+}
+
+/* CSS Task 8: outline on selected/focused form fields */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  border: 1.5px solid var(--border);
+  border-radius: 7px;
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  background: var(--surface);
+  transition: border-color 0.2s, outline 0.2s;
+  outline: none;   /* CSS Task 8: custom outline behavior */
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary);
+  outline: 3px solid rgba(26,60,94,0.18);   /* CSS Task 8: outline */
+  box-shadow: 0 0 0 2px rgba(26,60,94,0.07);
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.btn-clear {
+  background: transparent;
+  color: var(--error);
+  border: 1.5px solid var(--error);
+  padding: 0.75rem 1.75rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.btn-clear:hover {
+  background: var(--error);
+  color: #fff;
+}
+
+.form-output {
+  display: block;
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: #eafaf1;
+  border-left: 4px solid var(--success);
+  border-radius: 6px;
+  color: #1a7a45;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.error-msg {
+  color: var(--error);
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  display: block;
+}
+
+/* ──────────────────────────────────────────────
+   Feedback Section
+   ────────────────────────────────────────────── */
+#feedback { background: var(--surface); }
+
+#feedbackForm {
+  max-width: 600px;
+  margin-top: 1rem;
+}
+
+.char-count {
+  float: right;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  font-weight: 400;
+}
+
+/* ──────────────────────────────────────────────
+   CSS Task 9 – Multi-Column News Layout
+   ────────────────────────────────────────────── */
+#news { background: var(--surface-alt); }
+
+/* CSS Task 5: text-align, text-transform, letter-spacing, line-height */
+#news h2 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.6rem;
+}
+
+.news-columns {
+  column-count: 2;              /* CSS Task 9 */
+  column-gap: 30px;             /* CSS Task 9 */
+  column-rule: 1px solid var(--border); /* CSS Task 9 */
+  margin-top: 1.5rem;
+  line-height: 1.8;
+}
+
+.news-columns h3 {
+  break-inside: avoid;
+  color: var(--primary);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.3rem;
+}
+
+.news-columns p {
+  text-align: justify;          /* CSS Task 5: text-align */
+  color: var(--text-light);
+  margin-bottom: 1.25rem;
+  font-size: 0.92rem;
+}
+
+/* ──────────────────────────────────────────────
+   Footer
+   ────────────────────────────────────────────── */
+footer {
+  background: var(--primary);
+  color: rgba(255,255,255,0.8);
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+}
+footer a:link,
+footer a:visited { color: var(--accent); text-decoration: none; }
+footer a:hover   { color: #fff; text-decoration: underline; }
+
+/* ──────────────────────────────────────────────
+   CSS Task 10 – Responsive Media Queries
+   ────────────────────────────────────────────── */
+
+/* Flexible sizes with %, vw, vh */
+#welcomeBanner h1  { font-size: clamp(1.6rem, 4vw, 2.6rem); }
+section            { padding: 4rem 5%; }
+.gallery-img       { width: 100%; height: 130px; }
+
+/* Tablet: ≤ 900px */
+@media (max-width: 900px) {
+  .events-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .news-columns {
+    column-count: 1;
+  }
+}
+
+/* Mobile: ≤ 768px (CSS Task 10) */
+@media (max-width: 768px) {
+
+  /* Stack nav links vertically (CSS Task 10) */
+  .header-inner {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.3rem;
+  }
+
+  /* Reduce font sizes (CSS Task 10) */
+  h2              { font-size: 1.5rem; }
+  #welcomeBanner  { padding: 2rem 1.25rem; }
+  #welcomeBanner h1 { font-size: 1.6rem; }
+
+  /* Reduce image sizes (CSS Task 10) */
+  .gallery-img    { height: 100px; }
+  .gallery-table td { padding: 0.5rem; }
+
+  .events-grid    { grid-template-columns: 1fr; }
+  #registrationForm { padding: 1.5rem 1rem; }
+
+  /* CSS Task 10 – flexible layout with % */
+  section         { padding: 2.5rem 4%; }
+}
+
+/* ──────────────────────────────────────────────
+   CSS Task 10 Bonus – Flexbox & Grid utilities
+   ────────────────────────────────────────────── */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* ──────────────────────────────────────────────
+   CSS Task 8 – visibility: hidden vs display: none demo
+   (applied via JS toggle, classes defined here)
+   ────────────────────────────────────────────── */
+.vis-hidden  { visibility: hidden; }   /* takes up space */
+.disp-none   { display: none; }        /* removed from flow */
+
+/* CSS Task 4 – RGBA usage example (tooltip-style overlay) */
+.overlay-hint {
+  background: rgba(26, 60, 94, 0.85);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+>>>>>>> cf6c300a8a3668d2c3a7d7bdee501caf66f36a26
 }
