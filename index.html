@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community Event Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Task 14: jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-dot"></span>
+        <span class="logo-text">CommunityHub</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#events">Events</a>
+        <a href="#register-section">Register</a>
+        <a href="#debug-section">Debug</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <p class="hero-label">Local Community Event Portal</p>
+      <h1 class="hero-title">Find Your Next<br/><em>Community Moment</em></h1>
+      <p class="hero-sub">Browse, filter, and register for upcoming events in your neighborhood.</p>
+      <div class="hero-search">
+        <!-- Task 8: keydown search -->
+        <input type="text" id="search-input" placeholder="Search events by name..." />
+        <button class="btn-search" onclick="handleSearchBtn()">Search</button>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span id="total-events">0</span><small>Events</small></div>
+      <div class="stat"><span id="total-registered">0</span><small>Registered</small></div>
+      <div class="stat"><span id="total-categories">0</span><small>Categories</small></div>
+    </div>
+  </section>
+
+  <!-- FILTERS -->
+  <section class="filters-bar" id="events">
+    <div class="filters-inner">
+      <span class="filter-label">Filter by:</span>
+      <!-- Task 8: onchange filter -->
+      <select id="category-filter" onchange="filterByCategory(this.value)">
+        <option value="all">All Categories</option>
+        <option value="Music">🎵 Music</option>
+        <option value="Workshop">🛠 Workshop</option>
+        <option value="Sports">⚽ Sports</option>
+        <option value="Food">🍕 Food</option>
+        <option value="Tech">💻 Tech</option>
+        <option value="Art">🎨 Art</option>
+      </select>
+      <button class="btn-outline" onclick="resetFilters()">Reset</button>
+      <div id="loading-spinner" class="spinner hidden">Loading…</div>
+    </div>
+  </section>
+
+  <!-- EVENTS GRID -->
+  <main class="events-section">
+    <h2 class="section-title">Upcoming Events</h2>
+    <div id="events-container" class="events-grid"></div>
+    <p id="no-events-msg" class="no-events hidden">No events match your search.</p>
+  </main>
+
+  <!-- REGISTRATION FORM (Task 11) -->
+  <section class="register-section" id="register-section">
+    <div class="register-inner">
+      <h2 class="section-title">Register for an Event</h2>
+      <form id="register-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="reg-name">Full Name</label>
+            <input type="text" id="reg-name" placeholder="Jane Doe" />
+            <span class="error-msg" id="err-name"></span>
+          </div>
+          <div class="form-group">
+            <label for="reg-email">Email Address</label>
+            <input type="email" id="reg-email" placeholder="jane@example.com" />
+            <span class="error-msg" id="err-email"></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="reg-event">Select Event</label>
+          <select id="reg-event">
+            <option value="">-- Choose an event --</option>
+          </select>
+          <span class="error-msg" id="err-event"></span>
+        </div>
+        <button type="button" class="btn-primary" onclick="submitRegistration()">Register Now</button>
+        <div id="form-status" class="form-status hidden"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- DEBUG SECTION (Task 13) -->
+  <section class="debug-section" id="debug-section">
+    <div class="debug-inner">
+      <h2 class="section-title">Debug Console <span class="badge">Task 13</span></h2>
+      <p class="debug-desc">Simulated browser dev-tool log. Steps are printed as registration progresses.</p>
+      <div id="debug-log" class="debug-log"></div>
+      <button class="btn-outline" onclick="clearDebugLog()">Clear Log</button>
+    </div>
+  </section>
+
+  <!-- TASK REFERENCE PANEL -->
+  <section class="task-panel">
+    <div class="task-panel-inner">
+      <h2 class="section-title">14 JS Tasks — All Implemented</h2>
+      <div class="task-grid" id="task-grid"></div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>Community Event Portal &mdash; All 14 JavaScript Tasks Implemented</p>
+  </footer>
+
+  <!-- Task 1: External script -->
+  <script src="main.js"></script>
+</body>
+</html>
